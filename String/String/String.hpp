@@ -13,7 +13,7 @@ public:
 
 	size_t length;
 	char text[256];
-	char * pch;
+
 
 	String();
 
@@ -36,12 +36,10 @@ public:
 
 	String& ReadFromConsole();
 	String& WriteToConsole();
-	const String& WriteToConsole() const;
 
 	bool operator==(const String& _other) const;
 	
 	char& operator[](size_t _index);
-	const char& operator[](size_t _other) const;
 	
 	String& operator=(const String& _other);
 	bool operator<(const String& _other) const; 

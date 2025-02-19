@@ -1,24 +1,27 @@
 #include "String.hpp"
 
 
-String::String()
+String::String() 
 {
-    
+    length = 1;
+    text[0] = '\0';
 }
 
 String::String(const char* _str)
 {
-
+    length = strlen(_str);
+    strcpy(text, _str);
 }
 
 String::String(const String& _other)
 {
-
+    length = _other.Length();
+    strcpy(text, _other.text);
 }
 
 String::~String()
 {
-
+    
 }
 
 size_t String::Length() const
@@ -89,18 +92,29 @@ String& String::ReadFromConsole()
 
 String& String::WriteToConsole()
 {
-    std::cout << text;
+    std::cout << text << "\n";
     return *this;
 }
 
-//char& String::operator[](size_t _index)
-//{
-//    
-//}
-//
+char& String::operator[](size_t _index) 
+{
+	for (size_t n = 0; n < length; n++)
+	{
+        if (n == _index)
+		{
+            return(text[n]);
+		}
+	}
+    return text[length];
+        
+}
+
 bool String::operator<(const String& _other) const
 {
-    std::size_t shortestlength = std::min(length, _other.length);
+
+    return std::strcmp(text, _other.text) < 0;
+
+    /*std::size_t shortestlength = std::min(length, _other.length);
    
 
         for (std::size_t i = 0; i < shortestlength; ++i)
@@ -121,7 +135,7 @@ bool String::operator<(const String& _other) const
         {
             return true;
         }
-        return false;
+        return false;*/
 }
 String& String::operator=(const String& _other)
 {
