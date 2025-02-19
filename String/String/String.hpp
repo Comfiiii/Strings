@@ -43,7 +43,7 @@ public:
 	char& operator[](size_t _index);
 	const char& operator[](size_t _other) const;
 	
-	String& operator=(const String& _other) const;
+	String& operator=(const String& _other);
 	bool operator<(const String& _other) const; 
 
 private:

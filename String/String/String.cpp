@@ -23,7 +23,7 @@ String::~String()
 
 size_t String::Length() const
 {
-    return Length();
+    return length;
 }
 
 String& String::Append(const String& _str)
@@ -63,8 +63,9 @@ int String::FindCharacter(const char _chr)
        {
            return (int)i;
        }
-       return -1;
+       
     }
+    return -1;
 }
 
 int String::Replace(const char _find, const char _replace)
@@ -76,19 +77,21 @@ int String::Replace(const char _find, const char _replace)
             text[i] = _replace;
             return(int)i;
         }
-        return 0;
 	}
+    return -1;
 }
 
-//String& String::ReadFromConsole()
-//{
-//    std::cin >> text;
-//}
-//
-//String& String::WriteToConsole()
-//{
-//    std::cout << text;
-//}
+String& String::ReadFromConsole()
+{
+    std::cin >> text;
+    return *this;
+}
+
+String& String::WriteToConsole()
+{
+    std::cout << text;
+    return *this;
+}
 
 //char& String::operator[](size_t _index)
 //{
@@ -120,10 +123,18 @@ bool String::operator<(const String& _other) const
         }
         return false;
 }
-//String& String::operator=(const String& _other) const
-//{
-//
-//}
+String& String::operator=(const String& _other)
+{
+	/*if (this == &_other)
+	{
+		return *this;
+	}*/
+
+    std::strncpy(text, _other.text, _other.length + 1);
+    length = _other.length;
+
+    return *this;
+}
 
 bool String::operator==(const String& _other) const
 {
