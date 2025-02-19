@@ -5,16 +5,17 @@
 #include <cctype>
 #include <iostream>
 #include <cstdio>
-
+#include <algorithm>
 
 class String
 {
 public:
 
-	String();
 	size_t length;
 	char text[256];
 	char * pch;
+
+	String();
 
 	String(const char* _str);
 
@@ -35,14 +36,15 @@ public:
 
 	String& ReadFromConsole();
 	String& WriteToConsole();
+	const String& WriteToConsole() const;
 
-	bool operator==(const String& _other);
+	bool operator==(const String& _other) const;
 	
 	char& operator[](size_t _index);
-	const char& operator[](size_t _index) const;
+	const char& operator[](size_t _other) const;
 	
-	String& operator=(const String& _str);
-	bool operator<(const String& _str);
+	String& operator=(const String& _other) const;
+	bool operator<(const String& _other) const; 
 
 private:
 };
