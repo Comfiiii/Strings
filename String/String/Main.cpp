@@ -168,10 +168,6 @@ int main()
 	std::cout << "Read From Console and then Write To Console:\n";
 	readAndWriteTest.ReadFromConsole();
 	readAndWriteTest.WriteToConsole();
-	 
-	if ()
-	{
-	}
 
 	text1 = text2;
 
