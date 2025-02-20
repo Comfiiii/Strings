@@ -36,6 +36,7 @@ String& String::Append(const String& _str)
     {
 		strcat(text, _str.text);
     }
+    this->length = length + _str.length;
     
     return *this;
 }
@@ -164,5 +165,5 @@ bool String::operator==(const String& _other) const
             return false;
         }
     }
-    return 0;
+    return true;
 }
