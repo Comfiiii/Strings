@@ -29,7 +29,7 @@ size_t String::Length() const
     return length;
 }
 
-String& String::Append(const String& _str)
+String& String::Append(const String& _str) 
 {
 
     if (length + _str.Length() <= 256)
@@ -64,7 +64,7 @@ int String::FindCharacter(const char _chr)
     {
        if (text[i] == _chr)
        {
-           return (int)i;
+           return (int)i + 1;
        }
        
     }

@@ -14,7 +14,6 @@ public:
 	size_t length;
 	char text[256];
 
-
 	String();
 
 	String(const char* _str);
