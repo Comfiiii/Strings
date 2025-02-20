@@ -65,7 +65,7 @@ int String::FindCharacter(const char _chr)
     {
        if (text[i] == _chr)
        {
-           return (int)i + 1;
+           return (int)i;
        }
        
     }
