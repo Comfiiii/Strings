@@ -74,15 +74,16 @@ int String::FindCharacter(const char _chr)
 
 int String::Replace(const char _find, const char _replace)
 {
+    int count = 0;
 	for (size_t i = 0; i < length; i++)
 	{
         if (text[i] == _find)
         {
             text[i] = _replace;
-            return(int)i;
+            ++count;
         }
 	}
-    return -1;
+    return(int)count;
 }
 
 String& String::ReadFromConsole()

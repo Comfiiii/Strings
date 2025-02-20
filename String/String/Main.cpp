@@ -10,7 +10,7 @@ int main()
 	String appendedWord = " How Are You?";
 	bool isLowercaseTest = islower;
 	bool isUppercaseTest = isupper;
-	
+
 	char character = 'o';
 	char replacementCharacter = 'u';
 
@@ -43,18 +43,18 @@ int main()
 	text1.WriteToConsole();
 
 
-	if (text1  == "Hello World How Are You?")
+	if (text1 == "Hello World How Are You?")
 	{
 		std::cout << "----------------------------------\n";
 		std::cout << "^ Passed\n";
 	}
 
-	else 
+	else
 	{
 		std::cout << "----------------------------------\n";
 		std::cout << "^ Failed\n";
 	}
-	
+
 
 	text1 = text2;
 
@@ -74,7 +74,7 @@ int main()
 			isText1Lower = false;
 			break;
 		}
-		
+
 	}
 
 	if (isText1Lower == true)
@@ -112,58 +112,45 @@ int main()
 
 	text1 = text2;
 
+	int numberFound = text1.FindCharacter(character);
+
 	std::cout << "----------------------------------\n";
 	std::cout << "Find Character:\n";
-	std::cout << "First character '" << character << "' is located number " << text1.FindCharacter(character) << " in the word\n";
+	std::cout << "First character '" << character << "' is located number " << numberFound << " in the word\n";
 
-	bool foundCharacter = true;
-
-	for (size_t i = 0; i < text1.Length(); i++)
-	{
-		if (!character==(text1[i]))
-		{
-			std::cout << "----------------------------------\n";
-			std::cout << "^ Failed\n";
-			foundCharacter = false;
-			break;
-		}
-
-	}
-
-	if (foundCharacter = true)
+	if (numberFound == 4)
 	{
 		std::cout << "----------------------------------\n";
 		std::cout << "^ Passed\n";
 	}
 
+	else
+	{
+		std::cout << "----------------------------------\n";
+		std::cout << "^ Failed\n";
+	}
 	text1 = text2;
 
+	int numberOfReplaced = text1.Replace(character, replacementCharacter);
 	std::cout << "----------------------------------\n";
-	std::cout << "Replace Character:\n";
-	text1.Replace(character, replacementCharacter);
+	std::cout << "Number of replaced characters:\n";
+	std::cout << numberOfReplaced << "\n";
 	text1.WriteToConsole();
 
-	bool replacedCharacter = true;
-
-	for (size_t i = 0; i < text1.Length(); i++)
-	{
-		if (!replacementCharacter == (text1[i]))
-		{
-			std::cout << "----------------------------------\n";
-			std::cout << "^ Failed\n";
-			replacedCharacter = false;
-			break;
-		}
-
-	}
-
-	if (replacedCharacter = true)
+	if (numberOfReplaced == 2)
 	{
 		std::cout << "----------------------------------\n";
 		std::cout << "^ Passed\n";
 	}
+
+	else
+	{
+		std::cout << "----------------------------------\n";
+		std::cout << "^ Failed\n";
+	}
+
 	text1 = text2;
- 
+
 	std::cout << "----------------------------------\n";
 	std::cout << "Read From Console and then Write To Console:\n";
 	readAndWriteTest.ReadFromConsole();
@@ -173,7 +160,8 @@ int main()
 
 	std::cout << "----------------------------------\n";
 	std::cout << "Equality Operator:\n";
-	
+
 
 	return 0;
+
 }
