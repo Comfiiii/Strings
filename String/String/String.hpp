@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cstdio>
 #include <algorithm>
+#include <cstddef>
 
 class String
 {
@@ -42,6 +43,10 @@ public:
 	
 	String& operator=(const String& _other);
 	bool operator<(const String& _other) const; 
+
+
+	friend std::ostream& operator<<(std::ostream& left, const String& right);
+	friend std::istream& operator>>(std::istream& left, String& right);
 
 private:
 };

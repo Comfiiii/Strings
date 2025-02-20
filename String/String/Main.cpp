@@ -1,6 +1,6 @@
 #include "String.hpp"
 
-
+using namespace std;
 
 int main()
 {
@@ -16,13 +16,15 @@ int main()
 
 	text1 = text2;
 
-	std::cout << "Test text = ";
-	text1.WriteToConsole();
-	std::cout << "Character = " << character << ". And Replacement Character = " << replacementCharacter << ".\n";
+	cout << "Test text = ";
+	cout << text1 << "\n";
+	cout << "Appended text =";
+	appendedWord.WriteToConsole();
+	cout << "Character = " << character << ".\nReplacement Character = " << replacementCharacter << ".\n";
 
-	std::cout << "----------------------------------\n";
-	std::cout << "Text's Length:\n";
-	std::cout << "Text length is " << text1.Length() << " characters\n";
+	cout << "----------------------------------\n";
+	cout << "Text's Length:\n";
+	cout << "Text length is " << text1.Length() << " characters\n";
 
 	if (text1.Length() == 11)
 	{
@@ -37,10 +39,10 @@ int main()
 
 	text1 = text2;
 
-	std::cout << "----------------------------------\n";
-	std::cout << "Appended Text:\n";
+	cout << "----------------------------------\n";
+	cout << "Appended Text:\n";
 	text1.Append(appendedWord);
-	text1.WriteToConsole();
+	cout << text1 << "\n";
 
 
 	if (text1 == "Hello World How Are You?")
@@ -61,7 +63,7 @@ int main()
 	std::cout << "----------------------------------\n";
 	std::cout << "Text in Lowercase:\n";
 	text1.ToLower();
-	text1.WriteToConsole();
+	cout << text1 << "\n";
 
 	bool isText1Lower = true;
 
@@ -88,7 +90,7 @@ int main()
 	std::cout << "----------------------------------\n";
 	std::cout << "Text in Uppercase:\n";
 	text1.ToUpper();
-	text1.WriteToConsole();
+	cout << text1 << "\n";
 
 	bool isText1Upper = true;
 
@@ -116,7 +118,7 @@ int main()
 
 	std::cout << "----------------------------------\n";
 	std::cout << "Find Character:\n";
-	std::cout << "First character '" << character << "' is located number " << numberFound << " in the word\n";
+	std::cout << "First character '" << character << "' is found at the index of " << numberFound << "\n";
 
 	if (numberFound == 4)
 	{
@@ -135,7 +137,7 @@ int main()
 	std::cout << "----------------------------------\n";
 	std::cout << "Number of replaced characters:\n";
 	std::cout << numberOfReplaced << "\n";
-	text1.WriteToConsole();
+	cout << text1 << "\n";
 
 	if (numberOfReplaced == 2)
 	{
@@ -153,14 +155,10 @@ int main()
 
 	std::cout << "----------------------------------\n";
 	std::cout << "Read From Console and then Write To Console:\n";
-	readAndWriteTest.ReadFromConsole();
-	readAndWriteTest.WriteToConsole();
+	text1.ReadFromConsole();
+	cout << text1 << "\n";
 
 	text1 = text2;
-
-	std::cout << "----------------------------------\n";
-	std::cout << "Equality Operator:\n";
-
 
 	return 0;
 
