@@ -101,13 +101,13 @@ int main()
 		{
 			std::cout << "----------------------------------\n";
 			std::cout << "^ Failed\n";
-			isText1Lower = false;
+			isText1Upper = false;
 			break;
 		}
 
 	}
 
-	if (isText1Lower == true)
+	if (isText1Upper == true)
 	{
 		std::cout << "----------------------------------\n";
 		std::cout << "^ Passed\n";
@@ -170,13 +170,44 @@ int main()
 	cout << "Is " << test1 << " the same as " << test2 << ":\n";
 	if (test1 == test2)
 	{
-		std::cout << "True!\n";
+		std::cout << "True\n";
 	}
 	else
 	{
-		std::cout << "False!\n";
+		std::cout << "False\n";
 	}
+
 	if (test1 == test2)
+	{
+		std::cout << "----------------------------------\n";
+		std::cout << "^ Passed\n";
+	}
+
+	else
+	{
+		std::cout << "----------------------------------\n";
+		std::cout << "^ Failed\n";
+	}
+
+	text1 = text2;
+
+	String test3 = "a";
+	String test4 = "b";
+
+	cout << "----------------------------------\n";
+	cout << "LessThan Operator:\n";
+	cout << "Does " << test3 << " come before " << test4 << " alphabetically:\n";
+
+	if (test3 < test4)
+	{
+		std::cout << "True\n";
+	}
+	else
+	{
+		std::cout << "False\n";
+	}
+
+	if (test3 < test4)
 	{
 		std::cout << "----------------------------------\n";
 		std::cout << "^ Passed\n";
