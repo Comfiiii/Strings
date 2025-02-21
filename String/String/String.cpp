@@ -137,9 +137,9 @@ char& String::operator[](size_t _index)
 bool String::operator<(const String& _other) const
 {
 
-    return std::strcmp(text, _other.text) < 0;
+    /*return std::strcmp(text, _other.text) < 0;*/
 
-    /*std::size_t shortestlength = std::min(length, _other.length);
+    std::size_t shortestlength = std::min(length, _other.length);
    
 
         for (std::size_t i = 0; i < shortestlength; ++i)
@@ -160,7 +160,7 @@ bool String::operator<(const String& _other) const
         {
             return true;
         }
-        return false;*/
+        return false;
 }
 
 //assignment operator

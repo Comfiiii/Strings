@@ -6,6 +6,7 @@ int main()
 {
 	String text2("Hello World");
 	String text1(text2);
+	String text3("");
 	String readAndWriteTest;
 	String appendedWord = " How Are You?";
 	bool isLowercaseTest = islower;
@@ -151,12 +152,73 @@ int main()
 		std::cout << "^ Failed\n";
 	}
 
+	text1 = text3;
+
+	cout << "----------------------------------\n";
+	cout << "Read From Console and then Write To Console:\n";
+
+	cin >> text1;
+	cout << text1; cout << "\n";
+
 	text1 = text2;
 
-	std::cout << "----------------------------------\n";
-	std::cout << "Read From Console and then Write To Console:\n";
-	cin >> text1 >> "\n";
-	cout << text1 << "\n";
+	String test1 = "Hello!";
+	String test2 = "Hello!";
+
+	cout << "----------------------------------\n";
+	cout << "Equality Operator:\n";
+	cout << "Is " << test1 << " the same as " << test2 << ":\n";
+	if (test1 == test2)
+	{
+		std::cout << "True!\n";
+	}
+	else
+	{
+		std::cout << "False!\n";
+	}
+	if (test1 == test2)
+	{
+		std::cout << "----------------------------------\n";
+		std::cout << "^ Passed\n";
+	}
+
+	else
+	{
+		std::cout << "----------------------------------\n";
+		std::cout << "^ Failed\n";
+	}
+
+	text1 = text2;
+	
+	String test3 = "ad";
+	String test4 = "b";
+
+	cout << "----------------------------------\n";
+	cout << "LessThan Operator:\n";
+	cout << "Does " << test3 << " come before " << test4 << ":\n";
+	cout << test3 << test4 << "\n";
+	
+
+	if (test3 < test4)
+	{
+		std::cout << "True!\n";
+	}
+	else
+	{
+		std::cout << "False!\n";
+	}
+
+	if (test3 < test4)
+	{
+		std::cout << "----------------------------------\n";
+		std::cout << "^ Passed\n";
+	}
+
+	else
+	{
+		std::cout << "----------------------------------\n";
+		std::cout << "^ Failed\n";
+	}
 
 	text1 = text2;
 
