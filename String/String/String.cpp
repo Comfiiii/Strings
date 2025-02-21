@@ -1,4 +1,9 @@
 #include "String.hpp"
+#include <iostream>
+#include <algorithm>
+#include <cctype>
+#include <cstring>
+#include <string>
 
 //initializes the default String constructor
 String::String() 
@@ -98,7 +103,10 @@ int String::Replace(const char _find, const char _replace)
 //reads an input from the console and stores the result in a string
 String& String::ReadFromConsole()
 {
-    std::cin >> text;
+    std::string placeholder;
+    std::getline (std::cin, placeholder);
+    Append(placeholder.c_str());
+
     return *this;
 }
 
@@ -200,6 +208,9 @@ std::ostream& operator<<(std::ostream& left, const String& right)
 
 std::istream& operator>>(std::istream& left, String& right)
 {
-	std::cin >> right;
+	std::string placeholder;
+	std::getline(left, placeholder);
+	right.Append(placeholder.c_str());
+
 	return left;
 }

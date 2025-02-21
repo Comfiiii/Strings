@@ -1,5 +1,5 @@
 #include "String.hpp"
-
+#include <iostream>
 using namespace std;
 
 int main()
@@ -155,7 +155,7 @@ int main()
 
 	std::cout << "----------------------------------\n";
 	std::cout << "Read From Console and then Write To Console:\n";
-	text1.ReadFromConsole();
+	cin >> text1 >> "\n";
 	cout << text1 << "\n";
 
 	text1 = text2;

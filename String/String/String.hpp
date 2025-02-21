@@ -1,12 +1,9 @@
 #ifndef STRING_H
 #define STRING_H
 
-#include <cstring>
-#include <cctype>
-#include <iostream>
-#include <cstdio>
-#include <algorithm>
 #include <cstddef>
+#include <iostream>
+
 
 class String
 {
