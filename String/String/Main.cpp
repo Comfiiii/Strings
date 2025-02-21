@@ -190,38 +190,6 @@ int main()
 
 	text1 = text2;
 	
-	String test3 = "ad";
-	String test4 = "b";
-
-	cout << "----------------------------------\n";
-	cout << "LessThan Operator:\n";
-	cout << "Does " << test3 << " come before " << test4 << ":\n";
-	cout << test3 << test4 << "\n";
-	
-
-	if (test3 < test4)
-	{
-		std::cout << "True!\n";
-	}
-	else
-	{
-		std::cout << "False!\n";
-	}
-
-	if (test3 < test4)
-	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Passed\n";
-	}
-
-	else
-	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Failed\n";
-	}
-
-	text1 = text2;
-
 	return 0;
 
 }
