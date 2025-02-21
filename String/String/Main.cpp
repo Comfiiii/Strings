@@ -21,9 +21,10 @@ int main()
 	char replacementCharacter = 'u';
 	char _output[50];
 	struct tm datetime = *localtime(&timestamp);
-	int passPersentage = 100;
-	int fail = 11.11;
+	int total_successes = 0;
+	float percentage = 0.0;
 
+	file << "----------------------------------\n";
 	file << "Date: ";
 	strftime(_output, 50, "%B %e, %Y", &datetime);
 	file << _output << "\n";
@@ -47,12 +48,12 @@ int main()
 	if (text1.Length() == 11)
 	{
 		file << "----------------------------------\n" << "Length Test Passed.\n";
+		total_successes++;
 	}
 
 	else
 	{
 		file << "----------------------------------\n" << "Length Text Failed.\n";
-		passPersentage - fail;
 	}
 
 	text1 = text2;
@@ -66,12 +67,12 @@ int main()
 	if (text1 == "Hello World How Are You?")
 	{
 		file << "----------------------------------\n" << "Append Test Passed.\n";
+		total_successes++;
 	}
 
 	else
 	{
 		file << "----------------------------------\n" << "Append Test Failed.\n";
-		passPersentage - fail;
 	}
 
 
@@ -88,7 +89,6 @@ int main()
 	{
 		if (isalpha(text1[i]) && !islower(text1[i]))
 		{
-			passPersentage - fail;
 			file << "----------------------------------\n" << "ToLower Test Failed.\n";
 			isText1Lower = false;
 			break;
@@ -99,6 +99,7 @@ int main()
 	if (isText1Lower == true)
 	{
 		file << "----------------------------------\n" << "ToLower Test Passed.\n";
+		total_successes++;
 	}
 
 	text1 = text2;
@@ -114,7 +115,6 @@ int main()
 	{
 		if (isalpha(text1[i]) && !isupper(text1[i]))
 		{
-			passPersentage - fail;
 			file << "----------------------------------\n" << "ToUpper Test Failed.\n";
 			isText1Upper = false;
 			break;
@@ -125,6 +125,7 @@ int main()
 	if (isText1Upper == true)
 	{
 		file << "----------------------------------\n" << "ToUpper Test Passed.\n";
+		total_successes++;
 	}
 
 	text1 = text2;
@@ -138,12 +139,12 @@ int main()
 	if (numberFound == 4)
 	{
 		file << "----------------------------------\n" << "FindCharacter Test Passed.\n";
+		total_successes++;
 	}
 
 	else
 	{
 		file << "----------------------------------\n" << "FindCharacter Test Failed.\n";
-		passPersentage - fail;
 	}
 
 	text1 = text2;
@@ -157,12 +158,12 @@ int main()
 	if (numberOfReplaced == 2)
 	{
 		file << "----------------------------------\n" << "Replace Test Passed.\n";
+		total_successes++;
 	}
 
 	else
 	{
 		file << "----------------------------------\n" << "Replace Test Failed.\n";
-		passPersentage - fail;
 	}
 
 	text1 = text3;
@@ -193,12 +194,12 @@ int main()
 	if (test1 == test2)
 	{
 		file << "----------------------------------\n" << "Equality Operator Test Passed.\n";
+		total_successes++;
 	}
 
 	else
 	{
 		file << "----------------------------------\n" << "Equality Operator Test Failed.\n";
-		passPersentage - fail;
 	}
 
 	text1 = text2;
@@ -223,7 +224,7 @@ int main()
 	if (test3 < test4)
 	{
 		file << "----------------------------------\n" << "LessThan Operator Test Passed.\n";
-		passPersentage - fail;
+		total_successes++;
 	}
 
 	else
@@ -249,33 +250,27 @@ int main()
 	if (test6 == test5)
 	{
 		file << "----------------------------------\n" << "Assignment Operator Test Passed.\n" << "----------------------------------\n";
+		total_successes++;
+
 	}
 
 	else
 	{
 		file << "----------------------------------\n" << "Assignment Operator Test Failed.\n" << "----------------------------------\n";
-		passPersentage - fail;
 	}
 	
 
 	text1 = text2;
 
+	percentage = total_successes; 
+	percentage /= 900;
+	percentage *= 10000;
+
 	file << "Success Rate: ";
-	file << passPersentage;
+	file << percentage;
 	file << "%";
 	file << "\n";
-
-	/*cout << "----------------------------------\n";
-	cout << "Subscript Operator:\n";
-
-	for (size_t n = 0; n < text1.Length(); n++)
-	{
-		if (n == numberFound)
-		{
-			return(text1[n]);
-		}
-	}
-	cout << '\0';*/
-
+	file << "----------------------------------\n";
+	
 	return 0;
 }
