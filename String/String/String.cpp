@@ -121,15 +121,11 @@ String& String::WriteToConsole()
 //returns the character located at the position assigned to 'n'
 char& String::operator[](size_t _index) 
 {
-	for (size_t n = 0; n < length; n++)
-	{
-        if (n == _index)
-		{
-            return(text[n]);
-		}
-	}
-    return text[length];
-        
+    if (_index > Length())
+    {
+        return text['\0'];
+    }
+    return text[_index];
 }
 
 //lesser than operator

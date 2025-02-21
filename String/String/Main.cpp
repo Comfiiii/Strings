@@ -1,5 +1,9 @@
 #include "String.hpp"
 #include <iostream>
+#include <iosfwd>
+#include <fstream>
+#include <ctime>
+
 using namespace std;
 
 int main()
@@ -9,11 +13,23 @@ int main()
 	String text3("");
 	String readAndWriteTest;
 	String appendedWord = " How Are You?";
+	ofstream file("textfile.txt");
+	time_t timestamp = time(NULL);
 	bool isLowercaseTest = islower;
 	bool isUppercaseTest = isupper;
-
 	char character = 'o';
 	char replacementCharacter = 'u';
+	char _output[50];
+	struct tm datetime = *localtime(&timestamp);
+	int passPersentage = 100;
+	int fail = 11.11;
+
+	file << "Date: ";
+	strftime(_output, 50, "%B %e, %Y", &datetime);
+	file << _output << "\n";
+	file << "Time: ";
+	strftime(_output, 50, "%I:%M:%S %p", &datetime);
+	file << _output << "\n";
 
 	text1 = text2;
 
@@ -26,16 +42,17 @@ int main()
 	cout << "----------------------------------\n";
 	cout << "Text's Length:\n";
 	cout << "Text length is " << text1.Length() << " characters\n";
+	
 
 	if (text1.Length() == 11)
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Passed\n";
+		file << "----------------------------------\n" << "Length Test Passed.\n";
 	}
+
 	else
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Failed\n";
+		file << "----------------------------------\n" << "Length Text Failed.\n";
+		passPersentage - fail;
 	}
 
 	text1 = text2;
@@ -48,14 +65,13 @@ int main()
 
 	if (text1 == "Hello World How Are You?")
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Passed\n";
+		file << "----------------------------------\n" << "Append Test Passed.\n";
 	}
 
 	else
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Failed\n";
+		file << "----------------------------------\n" << "Append Test Failed.\n";
+		passPersentage - fail;
 	}
 
 
@@ -72,8 +88,8 @@ int main()
 	{
 		if (isalpha(text1[i]) && !islower(text1[i]))
 		{
-			std::cout << "----------------------------------\n";
-			std::cout << "^ Failed\n";
+			passPersentage - fail;
+			file << "----------------------------------\n" << "ToLower Test Failed.\n";
 			isText1Lower = false;
 			break;
 		}
@@ -82,8 +98,7 @@ int main()
 
 	if (isText1Lower == true)
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Passed\n";
+		file << "----------------------------------\n" << "ToLower Test Passed.\n";
 	}
 
 	text1 = text2;
@@ -99,8 +114,8 @@ int main()
 	{
 		if (isalpha(text1[i]) && !isupper(text1[i]))
 		{
-			std::cout << "----------------------------------\n";
-			std::cout << "^ Failed\n";
+			passPersentage - fail;
+			file << "----------------------------------\n" << "ToUpper Test Failed.\n";
 			isText1Upper = false;
 			break;
 		}
@@ -109,8 +124,7 @@ int main()
 
 	if (isText1Upper == true)
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Passed\n";
+		file << "----------------------------------\n" << "ToUpper Test Passed.\n";
 	}
 
 	text1 = text2;
@@ -123,15 +137,15 @@ int main()
 
 	if (numberFound == 4)
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Passed\n";
+		file << "----------------------------------\n" << "FindCharacter Test Passed.\n";
 	}
 
 	else
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Failed\n";
+		file << "----------------------------------\n" << "FindCharacter Test Failed.\n";
+		passPersentage - fail;
 	}
+
 	text1 = text2;
 
 	int numberOfReplaced = text1.Replace(character, replacementCharacter);
@@ -142,14 +156,13 @@ int main()
 
 	if (numberOfReplaced == 2)
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Passed\n";
+		file << "----------------------------------\n" << "Replace Test Passed.\n";
 	}
 
 	else
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Failed\n";
+		file << "----------------------------------\n" << "Replace Test Failed.\n";
+		passPersentage - fail;
 	}
 
 	text1 = text3;
@@ -179,14 +192,13 @@ int main()
 
 	if (test1 == test2)
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Passed\n";
+		file << "----------------------------------\n" << "Equality Operator Test Passed.\n";
 	}
 
 	else
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Failed\n";
+		file << "----------------------------------\n" << "Equality Operator Test Failed.\n";
+		passPersentage - fail;
 	}
 
 	text1 = text2;
@@ -197,11 +209,12 @@ int main()
 	cout << "----------------------------------\n";
 	cout << "LessThan Operator:\n";
 	cout << "Does " << test3 << " come before " << test4 << " alphabetically:\n";
-
+	
 	if (test3 < test4)
 	{
 		std::cout << "True\n";
 	}
+
 	else
 	{
 		std::cout << "False\n";
@@ -209,18 +222,60 @@ int main()
 
 	if (test3 < test4)
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Passed\n";
+		file << "----------------------------------\n" << "LessThan Operator Test Passed.\n";
+		passPersentage - fail;
 	}
 
 	else
 	{
-		std::cout << "----------------------------------\n";
-		std::cout << "^ Failed\n";
+		file << "----------------------------------\n" << "LessThan Operator Test Failed.\n";
 	}
 
 	text1 = text2;
 	
-	return 0;
+	String test5("Hello");
+	String test6("Goodbye");
 
+	cout << "----------------------------------\n";
+	cout << "Assignment Operator:\n";
+	cout << "First Word: " << test5 << "\n";
+	cout << "Second Word: " << test6 << "\n";
+	cout << "Running Command...\n";
+	test6 = test5;
+	cout << "Now First and Second word should both be the same.\n";
+	cout << "First Word: " << test5 << "\n";
+	cout << "Second Word: " << test6 << "\n";
+
+	if (test6 == test5)
+	{
+		file << "----------------------------------\n" << "Assignment Operator Test Passed.\n" << "----------------------------------\n";
+	}
+
+	else
+	{
+		file << "----------------------------------\n" << "Assignment Operator Test Failed.\n" << "----------------------------------\n";
+		passPersentage - fail;
+	}
+	
+
+	text1 = text2;
+
+	file << "Success Rate: ";
+	file << passPersentage;
+	file << "%";
+	file << "\n";
+
+	/*cout << "----------------------------------\n";
+	cout << "Subscript Operator:\n";
+
+	for (size_t n = 0; n < text1.Length(); n++)
+	{
+		if (n == numberFound)
+		{
+			return(text1[n]);
+		}
+	}
+	cout << '\0';*/
+
+	return 0;
 }
