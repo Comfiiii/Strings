@@ -13,6 +13,8 @@ int main()
 	String text3("");
 	String readAndWriteTest;
 	String appendedWord = " How Are You?";
+	char subscriptText[] = "dwdawawddw";
+	String subscriptTest = subscriptText;
 	ofstream file("textfile.txt");
 	time_t timestamp = time(NULL);
 	bool isLowercaseTest = islower;
@@ -38,7 +40,7 @@ int main()
 	cout << text1 << "\n";
 	cout << "Appended text =";
 	appendedWord.WriteToConsole();
-	cout << "Character = " << character << ".\nReplacement Character = " << replacementCharacter << ".\n";
+	cout << "Character = " << character << ".\n Replacement Character = " << replacementCharacter << ".\n";
 
 	cout << "----------------------------------\n";
 	cout << "Text's Length:\n";
@@ -249,22 +251,47 @@ int main()
 
 	if (test6 == test5)
 	{
-		file << "----------------------------------\n" << "Assignment Operator Test Passed.\n" << "----------------------------------\n";
+		file << "----------------------------------\n" << "Assignment Operator Test Passed.\n";
 		total_successes++;
 
 	}
 
 	else
 	{
-		file << "----------------------------------\n" << "Assignment Operator Test Failed.\n" << "----------------------------------\n";
+		file << "----------------------------------\n" << "Assignment Operator Test Failed.\n";
 	}
-	
+
+	text1 = text2;
+
+	cout << "----------------------------------\n";
+	cout << "Subscript Operator:\n";
+	cout << "What is character at position n?\n";
+	cout << subscriptText;
+
+	bool subScriptTest = true;
+	for (int i = 0; i < text1.Length(); i++)
+	{
+		if (subscriptText[i] != subscriptTest[i])
+		{
+			file << "----------------------------------\n" << "Subscript Test Failed.\n" << "----------------------------------\n";
+			subScriptTest = false;
+			break;
+		}
+
+	}
+
+
+	if (subScriptTest == true)
+	{
+		file << "----------------------------------\n" << "Subscript Test Passed.\n" << "----------------------------------\n";
+		total_successes++;
+	}
 
 	text1 = text2;
 
 	percentage = total_successes; 
-	percentage /= 900;
-	percentage *= 10000;
+	percentage /= 10;
+	percentage *= 100;
 
 	file << "Success Rate: ";
 	file << percentage;

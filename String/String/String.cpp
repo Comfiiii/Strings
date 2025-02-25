@@ -5,53 +5,56 @@
 #include <cstring>
 #include <string>
 
-//initializes the default String constructor
 String::String() 
 {
-    length = 1;
-    text[0] = '\0';
+    length = 0;
+    text = new char[1]{'\0'};
 }
 
-//initializes the _str constructor using String as a default
 String::String(const char* _str)
 {
     length = strlen(_str);
+    text = new char[length + 1];
     strcpy(text, _str);
 }
 
-//initializes the _other constructor using String as a default
 String::String(const String& _other)
 {
     length = _other.Length();
+	text = new char[length + 1];
     strcpy(text, _other.text);
 }
 
-//initializes the String deconstructor
 String::~String()
 {
-    
+    delete[] text;
 }
 
-//returns the length of a string as an int
 size_t String::Length() const
 {
     return length;
 }
 
-//adds a string to the end of another string
 String& String::Append(const String& _str) 
 {
-
-    if (length + _str.Length() <= 256)
+    if (_str.Length() == 0)
     {
-		strcat(text, _str.text);
+        return *this;
     }
-    this->length = length + _str.length;
-    
+
+    int newLength = length + _str.length;
+    char* newText = new char[newLength + 1];
+
+    strcpy(newText, text);
+    strcat(newText, _str.text);
+
+    delete[] text;
+    text = newText;
+    length = newLength;
+
     return *this;
 }
 
-//sets all characters to lowercase
 String& String::ToLower()
 {
     for (int i = 0; i < length; i++)
@@ -61,7 +64,6 @@ String& String::ToLower()
     return *this;
 }
 
-//sets all characters to uppercase
 String& String::ToUpper()
 {
 	for (int i = 0; i < length; i++)
@@ -71,8 +73,7 @@ String& String::ToUpper()
 	return *this;
 }
 
-//finds a character and returns its location as an int
-int String::FindCharacter(const char _chr)
+int String::FindCharacter(const char _chr) const
 {
     for (size_t i = 0; i < length; i++)
     {
@@ -85,7 +86,6 @@ int String::FindCharacter(const char _chr)
     return -1;
 }
 
-//replaces all occurrences of a character with a replacement character and returns how many is replaces
 int String::Replace(const char _find, const char _replace)
 {
     int count = 0;
@@ -100,7 +100,6 @@ int String::Replace(const char _find, const char _replace)
     return(int)count;
 }
 
-//reads an input from the console and stores the result in a string
 String& String::ReadFromConsole()
 {
     std::string placeholder;
@@ -110,26 +109,38 @@ String& String::ReadFromConsole()
     return *this;
 }
 
-//writes a string to the console window
 String& String::WriteToConsole()
 {
     std::cout << text << "\n";
     return *this;
 }
 
-//subscript operator
-//returns the character located at the position assigned to 'n'
+const String& String::WriteToConsole() const
+{
+	std::cout << text << "\n";
+	return *this;
+}
+
+
 char& String::operator[](size_t _index) 
 {
     if (_index > Length())
     {
-        return text['\0'];
+        return text[length];
     }
     return text[_index];
 }
 
-//lesser than operator
-//returns true if the left string comes before the right one alphabetically
+const char& String::operator[](size_t _index) const
+{
+	if (_index > Length())
+	{
+		return text[length];
+	}
+	return text[_index];
+}
+
+
 bool String::operator<(const String& _other) const
 {
 
@@ -159,23 +170,21 @@ bool String::operator<(const String& _other) const
         return false;
 }
 
-//assignment operator
-//replaces the character in the left string with the characters in the right one
 String& String::operator=(const String& _other)
 {
-	/*if (this == &_other)
+	if (this == &_other)
 	{
 		return *this;
-	}*/
-
+	}
+    delete[] text;
+    text = new char[_other.length + 1];
     std::strncpy(text, _other.text, _other.length + 1);
     length = _other.length;
 
     return *this;
 }
 
-//equality operator
-//returns true if the strings are identical
+
 bool String::operator==(const String& _other) const
 {
     if (length != _other.length)
