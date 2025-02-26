@@ -1,6 +1,6 @@
 ----------------------------------
 Date: February 26, 2025
-Time: 10:24:39 AM
+Time: 12:19:11 PM
 ----------------------------------
 Length Test Passed.
 ----------------------------------
@@ -24,3 +24,27 @@ Subscript Test Passed.
 ----------------------------------
 Success Rate: 100%
 ----------------------------------
+Date: February 26, 2025
+Time: 12:19:18 PM
+----------------------------------
+Length Test Passed.
+----------------------------------
+Append Test Passed.
+----------------------------------
+ToLower Test Passed.
+----------------------------------
+ToUpper Test Passed.
+----------------------------------
+FindCharacter Test Passed.
+----------------------------------
+Replace Test Passed.
+----------------------------------
+Equality Operator Test Passed.
+----------------------------------
+LessThan Operator Test Passed.
+----------------------------------
+Assignment Operator Test Passed.
+----------------------------------
+Subscript Test Passed.
+----------------------------------
+Success Rate: 100%

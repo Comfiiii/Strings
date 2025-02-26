@@ -13,9 +13,9 @@ int main()
 	String text3("");
 	String readAndWriteTest;
 	String appendedWord = " How Are You?";
-	char subscriptText[] = "dwdawawddw";
+	char subscriptText[] = "Welcome";
 	String subscriptTest = subscriptText;
-	ofstream file("textfile.txt");
+	ofstream file("textfile.txt", ios::out | ios::app);
 	time_t timestamp = time(NULL);
 	bool isLowercaseTest = islower;
 	bool isUppercaseTest = isupper;
@@ -40,7 +40,7 @@ int main()
 	cout << text1 << "\n";
 	cout << "Appended text =";
 	appendedWord.WriteToConsole();
-	cout << "Character = " << character << ".\n Replacement Character = " << replacementCharacter << ".\n";
+	cout << "Character = " << character << ".\nReplacement Character = " << replacementCharacter << ".\n";
 
 	cout << "----------------------------------\n";
 	cout << "Text's Length:\n";
@@ -49,12 +49,14 @@ int main()
 
 	if (text1.Length() == 11)
 	{
+		cout << "----------------------------------\n" << "Length Test Passed.\n";
 		file << "----------------------------------\n" << "Length Test Passed.\n";
 		total_successes++;
 	}
 
 	else
 	{
+		cout << "----------------------------------\n" << "Length Text Failed.\n";
 		file << "----------------------------------\n" << "Length Text Failed.\n";
 	}
 
@@ -68,12 +70,14 @@ int main()
 
 	if (text1 == "Hello World How Are You?")
 	{
+		cout << "----------------------------------\n" << "Append Test Passed.\n";
 		file << "----------------------------------\n" << "Append Test Passed.\n";
 		total_successes++;
 	}
 
 	else
 	{
+		cout << "----------------------------------\n" << "Append Test Failed.\n";
 		file << "----------------------------------\n" << "Append Test Failed.\n";
 	}
 
@@ -91,6 +95,7 @@ int main()
 	{
 		if (isalpha(text1[i]) && !islower(text1[i]))
 		{
+			cout << "----------------------------------\n" << "ToLower Test Failed.\n";
 			file << "----------------------------------\n" << "ToLower Test Failed.\n";
 			isText1Lower = false;
 			break;
@@ -100,6 +105,7 @@ int main()
 
 	if (isText1Lower == true)
 	{
+		cout << "----------------------------------\n" << "ToLower Test Passed.\n";
 		file << "----------------------------------\n" << "ToLower Test Passed.\n";
 		total_successes++;
 	}
@@ -117,6 +123,7 @@ int main()
 	{
 		if (isalpha(text1[i]) && !isupper(text1[i]))
 		{
+			cout << "----------------------------------\n" << "ToUpper Test Failed.\n";
 			file << "----------------------------------\n" << "ToUpper Test Failed.\n";
 			isText1Upper = false;
 			break;
@@ -126,6 +133,7 @@ int main()
 
 	if (isText1Upper == true)
 	{
+		cout << "----------------------------------\n" << "ToUpper Test Passed.\n";
 		file << "----------------------------------\n" << "ToUpper Test Passed.\n";
 		total_successes++;
 	}
@@ -140,12 +148,14 @@ int main()
 
 	if (numberFound == 4)
 	{
+		cout << "----------------------------------\n" << "FindCharacter Test Passed.\n";
 		file << "----------------------------------\n" << "FindCharacter Test Passed.\n";
 		total_successes++;
 	}
 
 	else
 	{
+		cout << "----------------------------------\n" << "FindCharacter Test Failed.\n";
 		file << "----------------------------------\n" << "FindCharacter Test Failed.\n";
 	}
 
@@ -159,12 +169,14 @@ int main()
 
 	if (numberOfReplaced == 2)
 	{
+		cout << "----------------------------------\n" << "Replace Test Passed.\n";
 		file << "----------------------------------\n" << "Replace Test Passed.\n";
 		total_successes++;
 	}
 
 	else
 	{
+		cout << "----------------------------------\n" << "Replace Test Failed.\n";
 		file << "----------------------------------\n" << "Replace Test Failed.\n";
 	}
 
@@ -195,12 +207,14 @@ int main()
 
 	if (test1 == test2)
 	{
+		cout << "----------------------------------\n" << "Equality Operator Test Passed.\n";
 		file << "----------------------------------\n" << "Equality Operator Test Passed.\n";
 		total_successes++;
 	}
 
 	else
 	{
+		cout << "----------------------------------\n" << "Equality Operator Test Failed.\n";
 		file << "----------------------------------\n" << "Equality Operator Test Failed.\n";
 	}
 
@@ -225,12 +239,14 @@ int main()
 
 	if (test3 < test4)
 	{
+		cout << "----------------------------------\n" << "LessThan Operator Test Passed.\n";
 		file << "----------------------------------\n" << "LessThan Operator Test Passed.\n";
 		total_successes++;
 	}
 
 	else
 	{
+		cout << "----------------------------------\n" << "LessThan Operator Test Failed.\n";
 		file << "----------------------------------\n" << "LessThan Operator Test Failed.\n";
 	}
 
@@ -251,6 +267,7 @@ int main()
 
 	if (test6 == test5)
 	{
+		cout << "----------------------------------\n" << "Assignment Operator Test Passed.\n";
 		file << "----------------------------------\n" << "Assignment Operator Test Passed.\n";
 		total_successes++;
 
@@ -258,6 +275,7 @@ int main()
 
 	else
 	{
+		cout << "----------------------------------\n" << "Assignment Operator Test Failed.\n";
 		file << "----------------------------------\n" << "Assignment Operator Test Failed.\n";
 	}
 
@@ -266,15 +284,20 @@ int main()
 	cout << "----------------------------------\n";
 	cout << "Subscript Operator:\n";
 	cout << "What is character at position n?\n";
-	cout << subscriptText;
-
+	
 	bool subScriptTest = true;
-	for (int i = 0; i < text1.Length(); i++)
+	int n = 1;
+
+
+
+	for (int i = 0; i < subscriptTest.Length(); i++)
 	{
 		if (subscriptText[i] != subscriptTest[i])
 		{
 			file << "----------------------------------\n" << "Subscript Test Failed.\n" << "----------------------------------\n";
 			subScriptTest = false;
+			cout << "ERROR";
+			cout << "----------------------------------\n" << "Subscript Test Failed.\n" << "----------------------------------\n";
 			break;
 		}
 
@@ -282,8 +305,11 @@ int main()
 
 
 	if (subScriptTest == true)
+
 	{
 		file << "----------------------------------\n" << "Subscript Test Passed.\n" << "----------------------------------\n";
+		cout << subscriptText[n] << "\n";
+		cout << "----------------------------------\n" << "Subscript Test Passed.\n" << "----------------------------------\n";
 		total_successes++;
 	}
 
@@ -297,7 +323,7 @@ int main()
 	file << percentage;
 	file << "%";
 	file << "\n";
-	file << "----------------------------------\n";
+	
 	
 	return 0;
 }
